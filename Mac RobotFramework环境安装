@@ -1,0 +1,30 @@
+参考资料： https://blog.csdn.net/dongqiushan/article/details/53326214
+1. 查看当前系统默认的Python路径
+which python
+==> /usr/bin/python 
+2. 查看当前python 版本
+Python --version
+==> Python 2.7.10 
+3. 安装 python 的包管理工具pip
+curl https://bootstrap.pypa.io/ez_setup.py -o - | python
+easy_install pip
+4. 安装 brew包管理器
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+5. 安装Python(mac已有忽略本步)
+brew install python 
+==> /usr/local/bin/python 版本：2.7.11
+6. 安装wxPython
+brew install wxPython （brew命令安装的是3.0版本，可能存在一些问题，可手动安装）
+手动下载安装地址： https://sourceforge.net/projects/wxpython/files/wxPython/2.8.12.1/ 
+7. 安装robotframework框架
+sudo pip install robotframework
+8. 安装robotframework-ride
+sudo pip install -U robotframework-ride==2.0a1
+9. 安装robotframework-requests
+sudo pip install robotframework-requests
+10. 安装 requests模块
+sudo pip install requests
+以上10个步骤是自动化框架安装的基本命令，此时应该能通过命令 ride.py打开RIDE编辑器
+11. 启动RIDE
+ride.py
+看到RF弹出表示RobotFramework环境安装成功
