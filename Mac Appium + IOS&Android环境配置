@@ -1,0 +1,73 @@
+参考资料：
+https://www.jianshu.com/p/a2b79cd8bf38 
+https://www.cnblogs.com/wonderful0714/p/5692549.html 
+1. 进入App Store，下载Xcode
+2. 下载brew，如果已经安装，请忽略
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 
+3. 安装libimobiledevice
+brew install libimobiledevice –HEAD
+4. 安装carthage
+brew install carthage
+5. 安装node.js
+nodejs下载地址：https://nodejs.org/en/download/ （下载mac下的pkg文件一键安装就行）
+6. 安装cnpm
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+7. 安装ios-deploy
+ios-deploy可以用来安装卸载ios应用。cnpm有个问题，就是安装的node_module会全部放在当前路径下。
+所以我们使用cnpm的时候，需要切换到/usr/local/lib(node模块默认安装路径)
+在终端输入:
+cd /usr/local/lib
+cnpm install -g ios-deploy
+8. 安装xcpretty
+gem install xcpretty
+安装xcpretty，经常安装失败，没反应，但是大家耐心等待吧，如果时间较长的话，建议大家切换个目录重新安装。可以更换gem源：
+gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
+如果gem版本过低需要升级。
+9. 安装appium
+cnpm install -g appium@1.8.1 （@1.8.1可以去除，去除后会自动安装最新版本）
+安装appium-desktop版本，可以直接用来获取获取app的页面元素信息，建议另安装该版本或者直接安装appium-desktop版本，进入appium官网下载安装即可。
+安装appium-doctor，检测appium是否安装成功
+npm install appium-doctor -g
+安装完成后，执行appium-doctor检查appium安装是否完全
+（如果提示找不到文件，则进入appium安装目录/appium-doctor/目录下，执行./appium-doctor.js），检查结果如下
+ 
+以上有部分软件未安装，接下来弥补上。
+a. Xcode Command Line Tools
+$ xcode-select --install
+xcode-select: note: install requested for command line developer tools
+b. Android SDK
+下载地址：https://developer.android.com/studio/install.html 
+下载完成之后，安装并下载SDK，配置环境变量
+# vim /etc/profile
+export ANDROID_HOME=/Users/macbook/Library/Android/sdk(路径写自己的安装路径)
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+c. 下载java后安装，配置环境变量
+# vim /etc/profile
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_71.jdk/Contents/Home(路径写自己的安装路径)
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+配置完成后，需要刷新配置文件
+source /etc/profile
+再次检查Appium成功安装
+ 
+10.安装appium-xcuitest-driver依赖
+进入appium安装目录，查找目录下的WebDriverAgent，进入WebDriverAgent后，执行以下命令
+mkdir -p Resources/WebDriverAgent.bundle
+sh ./Scripts/bootstrap.sh
+11. 进入WebDriverAgent目录，找到WebDriverAgent.xcodeproj，双击打开，默认就是用Xcode打开的
+ 
+12. 编译WebDriverAgentLib（如以下截图设置即可）
+切换到WebdriverAgentLib，编辑如下内容，然后点击左上角那个播放按钮进行编译。配置好后点击编译按钮，是build succeed的就可继续进行。(关于team，可即时注册个人开发者账号，激活后填入即可，此处会返回10位ID，后面连接真机时会用到)
+ 
+13. 编译WebDriverAgentRunner
+	首先编辑general里的内容，和上面大同小异，也是需要勾选自动签名和选择开发者帐号。配置好后点击编译按钮，是build succeed的就可继续进行。
+ 
+14. 获取手机的udid
+把你的手机设备通过usb连上电脑，然后打开itunes，然后选中你的iPhone，点击一下序列号，然后会弹出udid。
+ 
+15. 建立服务WebDriverAgent （手机和MAC都在同一个网段下，且都能连接外网）关闭Xcode，进入WebDriverAgent 文件夹（需要开启usb调试权限）
+cd /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent 
+xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'id=真机的udid' test
+这时候可以看到手机上多了一个WebdriverAgent的app，则表示环境已经配置成功。
+第一次会提示不受信任的开发者，需要进入设置-通用-设备管理（描述文件） 信任你的apple id。
