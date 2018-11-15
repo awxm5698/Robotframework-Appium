@@ -1,0 +1,68 @@
+参考资料：
+https://blog.csdn.net/soul_lover/article/details/77945154
+https://blog.csdn.net/heart_1014/article/details/52956200 
+一. 安装Android + JAVA
+1.	下载jdk : http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html
+2.	解压之后，将JAVA_HOME加入PATH
+$sudo vim /etc/profile
+JAVE_HOME=/usr/local/jave/jdk1.8.0_141
+PATH=$PATH:$JAVE_HOME/bin
+CLASSPATH=$JAVA_HOME/lib/
+export PATH JAVA_HOME CLASSPATH
+$source /etc/profile  //使文件中加入的变量生效
+$java -version
+3.	下载android sdk：http://www.androiddevtools.cn/
+4.	选择SDK Tools
+5.	下载linux版本的SDK，根据目录中的Readme.txt的提示执行：
+tools/android update sdk --no-ui
+6.	将androd sdk目录加入PATH
+$sudo vim /etc/profile
+ANDROID_HOME=/usr/local/android-sdk-linux
+PATH=$PATH:$JAVE_HOME/bin:$ANDROID_HOME/bin
+export PATH JAVA_HOME CLASSPATH ANDROID_HOME
+$source /etc/profile
+7.	运行android，更新sdk
+$android
+
+二.安装Appium 
+1.下载node
+sudo apt remove npm  //卸载npm
+sudo apt remove node //卸载node
+cd /usr/local/bin   //进入该目录中，若有node或者npm文件，将他删除删除
+去node.js官网下载最新版或者最稳定版的node.js Linux安装包
+2.安装node
+tar -xJf node-v9.5.0-linux-x64.tar.xz  //解压命令（注意包名变更为下载的包名）
+sudo mv node-v9.5.0-linux-x64 /opt/   //移动到opt目录下
+建立执行链接
+sudo ln -s /opt/node-v9.5.0-linux-x64/bin/node /usr/local/bin/node
+sudo ln -s /opt/node-v9.5.0-linux-x64/bin/npm /usr/local/bin/npm
+验证是否安装成功
+node -v
+npm -v
+3、安装cnpm
+$ npm install -g cnpm
+创建链接：ln -s cnpm安装路径 /usr/bin/cnpm
+sudo ln -s /opt/node-v9.5.0-linux-x64/bin/cnpm /usr/local/bin/cnpm
+4、安装appium
+sudo cnpm install -g appium@1.8.1（安装最新版会报错，所以安装1.8.1版本）
+创建链接：
+ln -s /opt/node-v9.5.0-linux-x64/lib/node_modules/appium/build/lib/main.js  /usr/bin/ local /appium
+5、启动Appium
+$ Appium
+
+三.安装robotFramework
+1.安装pip
+$sudo apt-get install python-pip
+2.用pip安装robotframework及其他库
+$pip install robotframework
+$pip install robotframework-ride
+$pip install  robotframework-appiumlibrary    //appium库
+$pip install robotframework-selenium2library
+$pip install requests
+$pip install  robotframework-requests
+3.安装wxpython2.8
+$echo "deb http://archive.ubuntu.com/ubuntu wily main universe" | sudo tee /etc/apt/sources.list.d/wily-copies.list
+$sudo apt update
+$sudo apt install python-wxgtk2.8
+$sudo rm /etc/apt/sources.list.d/wily-copies.list
+$sudo apt update
