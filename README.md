@@ -19,3 +19,12 @@ pybot -v url:http://172.16.3.173:4723/wd/hub flowTest.robot
 flowTest.robot 需要执行的测试文件，需要绝对路径
 
 
+pybot -V path/config.py path/smokeTest.robot
+
+config.py
+# -*- coding: utf-8 -*-
+# python
+ip = 'http://172.16.3.173'  #Appium服务ip
+port = '4723'  #Appium服务端口号
+apkAdress = 'http://221.5.44.91:8666/data/wisegame/1cb74367b5c1881d/tongxunbeifen_35.apk?business_id=9034&task_id=7181019164690874375    #apk下载链接  
+
