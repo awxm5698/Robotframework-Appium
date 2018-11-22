@@ -23,7 +23,7 @@ class AppiumLibraryExtender(object):
             return True
         return False
 
-    def swipe_buffed(self, x, y, end_x, end_y, duration):
+    def dragFromToForDuration(self, fromX, start_y, end_x, end_y, duration):
         driver = self._current_application()
         width = driver.get_window_width()
         height = driver.get_window_height()
@@ -34,11 +34,13 @@ class AppiumLibraryExtender(object):
         x_offset = x_end - x_start
         y_offset = y_end - y_start
         platform = driver._get_platform()
-#        if platform == 'android':
-#            self.swipe(x_start, y_start, x_end, y_end, duration)
-#        else:
+       if platform == 'android':
+           self.swipe(x_start, y_start, x_end, y_end, duration)
+       else:
 #            self.swipe(x_start, y_start, x_offset, y_offset, duration)
 
-        self.driver.execute_script("mobile: tap", {"y": height * mOperate.get("height", 0.3),
-                                                       "x": width * mOperate.get("width", 0.1),
-                                                       "duration": duration})
+           self.driver.execute_script("mobile: dragFromToForDuration", {"fromX": fromX,
+                                                                         "fromY":fromY,
+                                                                         "toX": toX,
+                                                                         "toY": toY
+                                                                         "duration": duration})
