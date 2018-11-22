@@ -6,7 +6,7 @@ appium+robotFramework环境搭建手册
 ln -s /Applications/Appium.app/Contents/Resources/app/node_modules/appium/build/lib/main.js  /usr/local/bin/appium
 
 【命令行启动Appium】
-
+需要远程登录操作
 appium -a 0.0.0.0 -p 4723 --session-override
 -a 是指定监听的ip（也可写成 --address），后面“0.0.0.0”可以改为你需要的ip地址，0.0.0.0或本机ip，支持其他机器访问，127.0.0.1，不支持外网访问；
 -p 是指定监听的端口（也可写成 --port），也可以修改为你需要的端口；
