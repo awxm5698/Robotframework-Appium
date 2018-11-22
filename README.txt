@@ -14,7 +14,7 @@ appium -a 0.0.0.0 -p 4723 --session-override
 
 【远程执行测试脚本】
 
-pybot -v url:http://172.16.3.173:4723/wd/hub flowTest.robot
+pybot -v ip:http://172.16.3.173 -v port:4723 path/flowTest.robot
 -v 指定执行测试脚本的服务器ip和端口号，‘172.16.3.173:4723’替换为需要的ip和端口号即可
 flowTest.robot 需要执行的测试文件，需要绝对路径
 
