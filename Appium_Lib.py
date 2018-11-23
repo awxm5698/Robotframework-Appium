@@ -34,7 +34,7 @@ class AppiumLibraryExtender(object):
 
         platform = driver._get_platform()
         if platform == 'android':
-            self.swipe(x_start, y_start, x_end, y_end, duration)
+            self.swipe(fromX, fromY, toX, toY, duration)
         else:
 #            self.swipe(x_start, y_start, x_offset, y_offset, duration)
             self.driver.execute_script("mobile: dragFromToForDuration", {"fromX": fromX,
