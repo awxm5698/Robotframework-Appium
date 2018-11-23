@@ -27,19 +27,17 @@ class AppiumLibraryExtender(object):
         driver = self._current_application()
         width = driver.get_window_width()
         height = driver.get_window_height()
-        x_start = float(start_x) / 100 * width
-        x_end = float(end_x) / 100 * width
-        y_start = float(start_y) / 100 * height
-        y_end = float(end_y) / 100 * height
-        x_offset = x_end - x_start
-        y_offset = y_end - y_start
-        platform = driver._get_platform()
-       if platform == 'android':
-           self.swipe(x_start, y_start, x_end, y_end, duration)
-       else:
-#            self.swipe(x_start, y_start, x_offset, y_offset, duration)
+        fromX = float(start_x) / 100 * width
+        toX = float(end_x) / 100 * width
+        fromY = float(start_y) / 100 * height
+        toY = float(end_y) / 100 * height
 
-           self.driver.execute_script("mobile: dragFromToForDuration", {"fromX": fromX,
+        platform = driver._get_platform()
+        if platform == 'android':
+            self.swipe(x_start, y_start, x_end, y_end, duration)
+        else:
+#            self.swipe(x_start, y_start, x_offset, y_offset, duration)
+            self.driver.execute_script("mobile: dragFromToForDuration", {"fromX": fromX,
                                                                          "fromY":fromY,
                                                                          "toX": toX,
                                                                          "toY": toY
