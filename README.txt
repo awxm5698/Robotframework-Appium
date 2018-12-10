@@ -33,3 +33,5 @@ apkAdress = 'http://221.5.44.91:8666/data/wisegame/1cb74367b5c1881d/tongxunbeife
 adb devices
 获取当前启动的appPackage和appActivity
 adb shell dumpsys window | grep mCurrentFocus
+
+http://10.14.147.23:8081/repository/maven-snapshots/com/samsclub/oce/score-mobile-app/0.0.1-SNAPSHOT/score-mobile-app-0.0.1-20181210.070234-1.apk
