@@ -66,3 +66,9 @@ $sudo apt update
 $sudo apt install python-wxgtk2.8
 $sudo rm /etc/apt/sources.list.d/wily-copies.list
 $sudo apt update
+
+四.安卓模拟器设置
+1.运行 android，选择tool-AVD manager（或者直接运行android avd）
+2.创建模拟器，并启动即可（启动过程中可能会有各种各样的报错，去百度搜索报错原因一一处理即可）
+  device:Nexus5|target:android 7.1.1|Skin:No skin|Emulation Options:None
+3.命令行查看和启动模拟器，emulator -list-avds（查看） emulator -avd Nexus5
