@@ -36,3 +36,5 @@ adb shell dumpsys window | grep mCurrentFocus
 
 http://10.14.147.23:8081/repository/maven-snapshots/com/samsclub/oce/score-mobile-app/0.0.1-SNAPSHOT/score-mobile-app-0.0.1-20181210.070234-1.apk
 http://10.14.147.21/apk/oce/score-mobile-app-0.0.1-SNAPSHOT.apk
+
+https://dev-tirebattery-webapp.azurewebsites.net/swagger-ui.html#/vehicle-controller/findMakesByYearUsingGET
